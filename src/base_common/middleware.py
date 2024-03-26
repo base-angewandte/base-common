@@ -44,7 +44,7 @@ class HealthCheckMiddleware:
 
     def __init__(self, get_response):
         self.get_response = get_response
-        self.health_check_path = f'{settings.FORCE_SCRIPT_NAME}/health'
+        self.health_check_path = '{}/health'.format(settings.FORCE_SCRIPT_NAME or '')
 
     def __call__(self, request):
         if request.path == self.health_check_path:
